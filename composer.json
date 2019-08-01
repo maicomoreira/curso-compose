@@ -1,0 +1,52 @@
+{
+    "name": "maicomoreira/buscador-cursos",
+    "description": "Projeto que busca os cursos no site da alura",
+    "type": "library",
+    "license": "gpl",
+    "authors": [
+        {
+            "name": "maico.moreirasilva",
+            "email": "maico.moreirasilva@live.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "symfony/dom-crawler": "^4.3",
+        "symfony/css-selector": "^4.3"
+    },
+    "autoload": {
+        "classmap": [
+            "./Teste.php"
+        ],
+        "files": [
+            "./functions.php"
+        ],
+        "psr-4": {
+            "maicomoreira\\BuscadorDeCursos\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5",
+        "squizlabs/php_codesniffer": "^3.4",
+        "phan/phan": "^2.2"
+    },
+
+    "scripts": {
+        "test": "phpunit tests\\TesteBuscadorDeCurso.php",
+        "cs": "phpcs --standard=PSR12 src/",
+        "cbf": "phpcbf --standard=PSR12 src/",
+        "phan": "phan --allow-polyfill-parser",
+        "check": [
+            "@phan",
+            "@cs",
+            "@cbf"
+        ],
+        "post-update-cmd": [
+            "@check"
+        ]
+    },
+
+    "scripts-descriptions": {
+        "check": "Roda as verificações do código PHAN, PHPCS, PHPunit e PHPCBF(para corrigr)."
+    }
+}
